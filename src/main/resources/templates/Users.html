@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.com" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users[[${defaultSuffix}]]</title>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" th:href="@{/assets/css/all.css}">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-12 col-md-2"></div>
+        <div class="col col-sm-12 col-md-8">
+            <!--            <div class="card" th:if="${user_count} == 0">-->
+            <!--                <div class="card-body">-->
+            <!--                    There aren't any users yet. Press <i class="fa-solid fa-user-plus"></i> to add one.-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <h3>Users</h3>
+            Welcome, [[${sessionUsername}]]
+        </div>
+        <div class="col col-sm-12 col-md-2"></div>
+    </div>
+</div>
+
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

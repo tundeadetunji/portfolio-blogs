@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Inc.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link th:href="@{/assets/vendor/google/fonts.css}" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" th:href="@{/assets/css/all.css}">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/assets/vendor/aos/aos.css}" rel="stylesheet">
+
+    <!-- Template Main CSS Files -->
+    <link th:href="@{assets/css/variables.css}" rel="stylesheet">
+    <link th:href="@{assets/css/main.css}" rel="stylesheet">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            searchForm.addEventListener("submit", function(){
+                document.location = "/contact";
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+<div th:replace="~{includes/navbar :: navbar}"></div>
+<main id="main">
+
+
+    <section th:if="${message}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 trending">
+                    [[${message}]]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Hero Slider Section ======= -->
+    <section id="hero-slider" class="hero-slider">
+        <div class="container-md" data-aos="fade-in">
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper sliderFeaturedPosts">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a th:href="@{/blog/} + ${last_business_id}" class="img-bg d-flex align-items-end"
+                                   style="background-image: url('assets/img/post-slide-1.jpg');">
+                                    <div class="img-bg-inner">
+                                        <h2>[[${last_business_title}]]</h2>
+                                        <p>[[${last_business_content}]]</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a th:href="@{/blog/} + ${last_culture_id}" class="img-bg d-flex align-items-end"
+                                   style="background-image: url('assets/img/post-slide-2.jpg');">
+                                    <div class="img-bg-inner">
+                                        <h2>[[${last_culture_title}]]</h2>
+                                        <p>[[${last_culture_content}]]</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a th:href="@{/blog/} + ${last_lifestyle_id}" class="img-bg d-flex align-items-end"
+                                   style="background-image: url('assets/img/post-slide-3.jpg');">
+                                    <div class="img-bg-inner">
+                                        <h2>[[${last_lifestyle_title}]]</h2>
+                                        <p>[[${last_lifestyle_content}]]</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="custom-swiper-button-next">
+                            <span class="bi-chevron-right"></span>
+                        </div>
+                        <div class="custom-swiper-button-prev">
+                            <span class="bi-chevron-left"></span>
+                        </div>
+
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero Slider Section -->
+
+    <!-- ======= Post Grid Section ======= -->
+    <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="post-entry-1 lg">
+                        <a th:href="@{/blog/} + ${last_culture_id}"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
+                        <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span>
+                            <span>[[${last_culture_published}]]</span></div>
+                        <h2><a th:href="@{/blog/} + ${last_culture_id}">[[${last_culture_title}]]</a></h2>
+                        <p class="mb-4 d-block">[[${last_culture_content}]]</p>
+
+                        <div class="d-flex align-items-center author">
+                            <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
+                            <div class="name">
+                                <h3 class="m-0 p-0">[[${last_culture_author}]]</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_culture_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_culture_id}">[[${second_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_culture_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_culture_id}">[[${third_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${last_business_id}"><img src="assets/img/post-landscape-7.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span> <span>[[${last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${last_business_id}">[[${last_business_title}]]</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_business_id}"><img src="assets/img/post-landscape-3.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_business_id}">[[${second_to_last_business_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${last_lifestyle_id}"><img src="assets/img/post-landscape-6.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${last_lifestyle_id}">[[${last_lifestyle_title}]]</a>
+                                </h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}"><img src="assets/img/post-landscape-8.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">[[${second_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                        </div>
+
+                        <!-- Trending Section -->
+                        <div class="col-lg-4">
+
+                            <div class="trending">
+                                <h3>Latest</h3>
+                                <ul class="trending-post">
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_business_id}">
+                                            <span class="number">1</span>
+                                            <h3>[[${last_business_title}]]</h3>
+                                            <span class="author">[[${last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_business_id}">
+                                            <span class="number">2</span>
+                                            <h3>[[${second_to_last_business_title}]]</h3>
+                                            <span class="author">[[${second_to_last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_culture_id}">
+                                            <span class="number">3</span>
+                                            <h3>[[${last_culture_title}]]</h3>
+                                            <span class="author">[[${last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_culture_id}">
+                                            <span class="number">4</span>
+                                            <h3>[[${second_to_last_culture_title}]]</h3>
+                                            <span class="author">[[${second_to_last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_lifestyle_id}">
+                                            <span class="number">5</span>
+                                            <h3>[[${last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">
+                                            <span class="number">6</span>
+                                            <h3>[[${second_to_last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${second_to_last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div> <!-- End Trending Section -->
+                    </div>
+                </div>
+
+            </div> <!-- End .row -->
+        </div>
+    </section> <!-- End Post Grid Section -->
+
+    <!-- ======= Culture Category Section ======= -->
+    <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header d-flex justify-content-between align-items-center mb-5">
+                <h2>Culture</h2>
+                <div><a th:href="@{/culture}" class="more">See All Culture</a></div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="post-entry-1 lg">
+                        <a th:href="@{/blog/} + ${last_culture_id}"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
+                        <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span>
+                            <span>[[${last_culture_published}]]</span></div>
+                        <h2><a th:href="@{/blog/} + ${last_culture_id}">[[${last_culture_title}]]</a></h2>
+                        <p class="mb-4 d-block">[[${last_culture_content}]]</p>
+
+                        <div class="d-flex align-items-center author">
+                            <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
+                            <div class="name">
+                                <h3 class="m-0 p-0">[[${last_culture_author}]]</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_culture_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_culture_id}">[[${second_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_culture_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_culture_id}">[[${third_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_culture_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_culture_id}">[[${second_to_last_culture_title}]]</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_culture_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_culture_id}">[[${third_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_culture_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_culture_id}">[[${second_to_last_culture_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${last_culture_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Culture</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${last_culture_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${last_culture_id}">[[${last_culture_title}]]</a></h2>
+                            </div>
+                        </div>
+
+                        <!-- Trending Section -->
+                        <div class="col-lg-4">
+
+                            <div class="trending">
+                                <h3>Latest</h3>
+                                <ul class="trending-post">
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_culture_id}">
+                                            <span class="number">1</span>
+                                            <h3>[[${last_culture_title}]]</h3>
+                                            <span class="author">[[${last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_culture_id}">
+                                            <span class="number">2</span>
+                                            <h3>[[${second_to_last_culture_title}]]</h3>
+                                            <span class="author">[[${second_to_last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_culture_id}">
+                                            <span class="number">3</span>
+                                            <h3>[[${last_culture_title}]]</h3>
+                                            <span class="author">[[${last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_culture_id}">
+                                            <span class="number">4</span>
+                                            <h3>[[${second_to_last_culture_title}]]</h3>
+                                            <span class="author">[[${second_to_last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${third_to_last_culture_id}">
+                                            <span class="number">5</span>
+                                            <h3>[[${third_to_last_culture_title}]]</h3>
+                                            <span class="author">[[${third_to_last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_culture_id}">
+                                            <span class="number">6</span>
+                                            <h3>[[${second_to_last_culture_title}]]</h3>
+                                            <span class="author">[[${second_to_last_culture_author}]]</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Trending Section -->
+                    </div>
+                </div>
+
+            </div> <!-- End .row -->
+        </div>
+    </section>
+    <!-- End Culture Category Section -->
+
+    <!-- ======= Business Category Section ======= -->
+    <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header d-flex justify-content-between align-items-center mb-5">
+                <h2>Business</h2>
+                <div><a th:href="@{/business}" class="more">See All Business</a></div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="post-entry-1 lg">
+                        <a th:href="@{/blog/} + ${last_business_id}"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
+                        <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span>
+                            <span>[[${last_business_published}]]</span></div>
+                        <h2><a th:href="@{/blog/} + ${last_business_id}">[[${last_business_title}]]</a></h2>
+                        <p class="mb-4 d-block">[[${last_business_content}]]</p>
+
+                        <div class="d-flex align-items-center author">
+                            <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
+                            <div class="name">
+                                <h3 class="m-0 p-0">[[${last_business_author}]]</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_business_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_business_id}">[[${second_to_last_business_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_business_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_business_id}">[[${third_to_last_business_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_business_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_business_id}">[[${second_to_last_business_title}]]</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_business_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_business_id}">[[${third_to_last_business_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_business_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_business_id}">[[${second_to_last_business_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${last_business_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Business</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${last_business_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${last_business_id}">[[${last_business_title}]]</a></h2>
+                            </div>
+                        </div>
+
+                        <!-- Trending Section -->
+                        <div class="col-lg-4">
+
+                            <div class="trending">
+                                <h3>Latest</h3>
+                                <ul class="trending-post">
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_business_id}">
+                                            <span class="number">1</span>
+                                            <h3>[[${last_business_title}]]</h3>
+                                            <span class="author">[[${last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_business_id}">
+                                            <span class="number">2</span>
+                                            <h3>[[${second_to_last_business_title}]]</h3>
+                                            <span class="author">[[${second_to_last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_business_id}">
+                                            <span class="number">3</span>
+                                            <h3>[[${last_business_title}]]</h3>
+                                            <span class="author">[[${last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_business_id}">
+                                            <span class="number">4</span>
+                                            <h3>[[${second_to_last_business_title}]]</h3>
+                                            <span class="author">[[${second_to_last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${third_to_last_business_id}">
+                                            <span class="number">5</span>
+                                            <h3>[[${third_to_last_business_title}]]</h3>
+                                            <span class="author">[[${third_to_last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_business_id}">
+                                            <span class="number">6</span>
+                                            <h3>[[${second_to_last_business_title}]]</h3>
+                                            <span class="author">[[${second_to_last_business_author}]]</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Trending Section -->
+                    </div>
+                </div>
+
+            </div> <!-- End .row -->
+        </div>
+    </section>
+    <!-- End Business Category Section -->
+
+    <!-- ======= Lifestyle Category Section ======= -->
+    <section id="posts" class="posts">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header d-flex justify-content-between align-items-center mb-5">
+                <h2>Lifestyle</h2>
+                <div><a th:href="@{/lifestyle}" class="more">See All Lifestyle</a></div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="post-entry-1 lg">
+                        <a th:href="@{/blog/} + ${last_lifestyle_id}"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
+                        <div class="post-meta"><span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
+                            <span>[[${last_lifestyle_published}]]</span></div>
+                        <h2><a th:href="@{/blog/} + ${last_lifestyle_id}">[[${last_lifestyle_title}]]</a></h2>
+                        <p class="mb-4 d-block">[[${last_lifestyle_content}]]</p>
+
+                        <div class="d-flex align-items-center author">
+                            <div class="photo"><img src="assets/img/person-1.jpg" alt="" class="img-fluid"></div>
+                            <div class="name">
+                                <h3 class="m-0 p-0">[[${last_lifestyle_author}]]</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">[[${second_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_lifestyle_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_lifestyle_id}">[[${third_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">[[${second_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 border-start custom-border">
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${third_to_last_lifestyle_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${third_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${third_to_last_lifestyle_id}">[[${third_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}"><img src="assets/img/post-landscape-2.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${second_to_last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">[[${second_to_last_lifestyle_title}]]</a></h2>
+                            </div>
+                            <div class="post-entry-1">
+                                <a th:href="@{/blog/} + ${last_lifestyle_id}"><img src="assets/img/post-landscape-5.jpg" alt=""
+                                                                class="img-fluid"></a>
+                                <div class="post-meta"><span class="date">Lifestyle</span> <span
+                                        class="mx-1">&bullet;</span>
+                                    <span>[[${last_lifestyle_published}]]</span></div>
+                                <h2><a th:href="@{/blog/} + ${last_lifestyle_id}">[[${last_lifestyle_title}]]</a></h2>
+                            </div>
+                        </div>
+
+                        <!-- Trending Section -->
+                        <div class="col-lg-4">
+
+                            <div class="trending">
+                                <h3>Latest</h3>
+                                <ul class="trending-post">
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_lifestyle_id}">
+                                            <span class="number">1</span>
+                                            <h3>[[${last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">
+                                            <span class="number">2</span>
+                                            <h3>[[${second_to_last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${second_to_last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${last_lifestyle_id}">
+                                            <span class="number">3</span>
+                                            <h3>[[${last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">
+                                            <span class="number">4</span>
+                                            <h3>[[${second_to_last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${second_to_last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${third_to_last_lifestyle_id}">
+                                            <span class="number">5</span>
+                                            <h3>[[${third_to_last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${third_to_last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/blog/} + ${second_to_last_lifestyle_id}">
+                                            <span class="number">6</span>
+                                            <h3>[[${second_to_last_lifestyle_title}]]</h3>
+                                            <span class="author">[[${second_to_last_lifestyle_author}]]</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Trending Section -->
+                    </div>
+                </div>
+
+            </div> <!-- End .row -->
+        </div>
+    </section>
+    <!-- End Lifestyle Category Section -->
+
+</main>
+
+<div th:replace="~{includes/footer :: footer}"></div>
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{assets/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{assets/vendor/aos/aos.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
+</body>
+
+</html>

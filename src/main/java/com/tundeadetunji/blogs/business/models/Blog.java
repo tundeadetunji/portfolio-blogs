@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Blogs")
+//@Table(name = "Blogs")
 public class Blog {
 
     @Id
@@ -43,20 +43,20 @@ public class Blog {
     @Column(nullable = false, length = 4000)
     private String contentLead;
 
-//    public Blog() {
-//    }
+    public Blog() {
+    }
 
-//    public Blog(Long id, String uuid, String category, String title, String author, String published, String lastModified, String content, String contentLead) {
-//        this.id = id;
-//        this.uuid = uuid;
-//        this.category = category;
-//        this.title = title;
-//        this.author = author;
-//        this.published = published;
-//        this.lastModified = lastModified;
-//        this.content = content;
-//        this.contentLead = contentLead;
-//    }
+    public Blog(Long id, String uuid, String category, String title, String author, String published, String lastModified, String content, String contentLead) {
+        this.id = id;
+        this.uuid = uuid;
+        this.category = category;
+        this.title = title;
+        this.author = author;
+        this.published = published;
+        this.lastModified = lastModified;
+        this.content = content;
+        this.contentLead = contentLead;
+    }
 
     public Long getId() {
         return id;
